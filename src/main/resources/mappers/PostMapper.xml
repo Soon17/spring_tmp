@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- ================================추가된 부분==================================== -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.kh.tmp.dao.PostDAO">
+	
+	<insert id="">
+	
+	</insert>
+	
+	<select id="" resultType="PostDAO">	<!-- ../spring/mybatis-config.xml 에 추가된 코드로 인해 축약 사용 가능 -->
+		
+	</select>
+</mapper>
+<!-- ============================================================================= -->
