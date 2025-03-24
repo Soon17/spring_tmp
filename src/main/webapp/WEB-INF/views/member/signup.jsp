@@ -11,7 +11,7 @@
 	<form action="<c:url value="/signup"/>" method="post">
 		<div class="form-group">
 		  <label for="usr">아이디:</label>
-		  <input type="text" class="form-control" id="id" name="me_id">
+		  <input type="text" class="form-control" id="id" name="me_id" value="${id}">
 		</div>
 		<div class="form-group">
 		  <label for="pw">비밀번호:</label>
