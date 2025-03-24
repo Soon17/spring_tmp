@@ -36,6 +36,18 @@
 	        </beans:list>
 	    </beans:property>
 	</beans:bean>
+	
+	<!-- 인터셉터 등록 -->
+	<beans:bean id="loginIntercepter" class="kr.kh.tmp.interceptor.LoginInterceptor"/>
+	
+	<!-- 인터셉터 맵핑 -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/login"/>
+			<beans:ref bean="loginIntercepter"/>
+		</interceptor>
+	</interceptors>
+
 	<!-- ================================================================================ -->
 	
 </beans:beans>

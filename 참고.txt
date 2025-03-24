@@ -30,4 +30,5 @@ src/main/resources 안에 mappers 폴더 생성
 2. 컨트롤러에 메소드 추가(get)
 3. jsp추가
 4. 컨트롤러에 메소드 추가(post)
-5. 
+
+패키지 경로 입력이 번거로울 땐 ../spring/mybatis-config.xml 에 추가

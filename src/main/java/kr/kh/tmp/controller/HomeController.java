@@ -55,6 +55,7 @@ public class HomeController {
 		if(user != null) {
 			model.addAttribute("url", "/");			//성공하면 home
 			model.addAttribute("msg", "로그인에 성공했습니다.");
+			model.addAttribute("user", user);
 		} else {
 			model.addAttribute("url", "/login?id=" + member.getMe_id());	//실패하면 화면 유지
 			model.addAttribute("msg", "로그인에 실패했습니다.");
