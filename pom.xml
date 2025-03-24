@@ -172,7 +172,20 @@
 		    <artifactId>tiles-template</artifactId>
 		    <version>${org.apache.tiles-version}</version>
 		</dependency>
-
+		
+		<!-- lombok -->
+		<dependency>
+		    <groupId>org.projectlombok</groupId>
+		    <artifactId>lombok</artifactId>
+		    <version>1.18.36</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>commons-beanutils</groupId>
+		    <artifactId>commons-beanutils</artifactId>
+		    <version>1.8.3</version>
+		</dependency>
+		
 		<!-- ================================================================================ -->
 	</dependencies>
     <build>
