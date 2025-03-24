@@ -1,0 +1,27 @@
+spring framework git ignore 복붙
+pom.xml 삭제
+test/ 추가 - 패키지에 .test는 사용하지 않아야 한다.
+
+----------git연동---------
+내 branch, dev branch 생성
+
+내가 올리기 좀 걱정되고 누군가 확인한번 해줬으면 좋겠을 때는 create full request, 
+내가 직접 올릴 때는 dev에서 merge into current branch
+
+아무데서나 ctrl+N, spring legacy project 선택, use local 해제 후 폴더 선택
+
+spring MVC project 클릭 후 next, 프로젝트명 만들고 생성
+
+run as - run on server - tomcat - next - remove all(현재 프로젝트만 실행하기 위함)
+
+
+main 병합은 한사람, dev와 개인 브랜치 병합은 각자
+-----------------------
+
+src/main/java의 kr.kh.tmp 안에 controller, dao, model.vo, service 패키지 생성
+src/main/resources 안에 mappers 폴더 생성 
+
+노션에 따르기...
+
+/spring_tmp/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml 에서
+<context:component-scan base-package="kr.kh.tmp.*" /> 로 수정
