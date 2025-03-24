@@ -25,3 +25,9 @@ src/main/resources 안에 mappers 폴더 생성
 
 /spring_tmp/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml 에서
 <context:component-scan base-package="kr.kh.tmp.*" /> 로 수정
+
+1. 링크 추가
+2. 컨트롤러에 메소드 추가(get)
+3. jsp추가
+4. 컨트롤러에 메소드 추가(post)
+5. 

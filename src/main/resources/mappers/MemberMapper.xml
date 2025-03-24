@@ -9,5 +9,10 @@
 		insert into member(me_id, me_pw, me_email)
 		values(#{member.me_id}, #{member.me_pw}, #{member.me_email})
 	</insert>
+	
+	<select id="selectMember" resultType="MemberVO">	<!-- ../spring/mybatis-config.xml 에 추가된 코드로 인해 축약 사용 가능 -->
+		select * from member
+		where me_id = #{me_id}
+	</select>
 </mapper>
 <!-- ============================================================================= -->
