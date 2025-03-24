@@ -17,11 +17,12 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 	    ModelAndView mv)
 	    throws Exception {
 		//넘겨준 회원 정보를 가져옴
-		MemberVO user = (MemberVO)mv.getModel().get("user");		//HomeController의 addAttribute("여기", )와 이름이 같아야 함
+		MemberVO user = (MemberVO)mv.getModel().get("user");		//HomeController의 loginPost의 addAttribute("여기", )와 이름이 같아야 함
 		//회원정보가 있으면(로그인에 성공했으면)
 		if(user != null) {
 			//세션에 회원 정보 추가
-			request.getSession().setAttribute("user", user);
+			request.getSession().setAttribute("user", user);		//HomeController의 logout의 removeAttribute("여기")와 이름이 같아야 함
+																	//header의 ${여기 == null}, ${여기 != null}와도 이름이 같아야 함
 		}
 	}
 	@Override
