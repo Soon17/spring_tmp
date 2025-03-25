@@ -24,4 +24,8 @@ public interface PostService {
 
 	PostVO getPost(int po_num);
 
+	boolean deletePost(int po_num, MemberVO user);
+
+	boolean updatePost(PostVO post, MemberVO user);
+
 }

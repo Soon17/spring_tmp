@@ -9,7 +9,7 @@
 <body>
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 	  <!-- Brand/logo -->
-	  <a class="navbar-brand" href="#">
+	  <a class="navbar-brand" href="/tmp">
 	    <img src="<c:url value="/resources/img/bird.jpg"/>" alt="logo" style="width:40px;">
 	  </a>
 	  

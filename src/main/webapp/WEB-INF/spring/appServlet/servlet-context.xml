@@ -35,6 +35,7 @@
 	<!-- 인터셉터 등록 -->
 	<beans:bean id="loginIntercepter" class="kr.kh.tmp.interceptor.LoginInterceptor"/>
 	<beans:bean id="adminInterceptor" class="kr.kh.tmp.interceptor.AdminInterceptor"/>
+	<beans:bean id="memberInterceptor" class="kr.kh.tmp.interceptor.MemberInterceptor"/>
 	
 	<!-- 인터셉터 맵핑 -->
 	<interceptors>
@@ -45,6 +46,12 @@
 		<interceptor>
 			<mapping path="/admin/**"/>
 			<beans:ref bean="adminInterceptor"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/post/update"/>
+			<mapping path="/post/update/*"/>
+			<mapping path="/post/delete/*"/>
+			<beans:ref bean="memberInterceptor"/>
 		</interceptor>
 	</interceptors>
 

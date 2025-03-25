@@ -9,6 +9,10 @@
 <body>
 	<h1>게시글 상세</h1>
 	<div class="form-group">
+		<label>게시판</label>
+		<div class="form-control">${post.po_bo_name}</div>
+	</div>
+	<div class="form-group">
 		<label>제목</label>
 		<div class="form-control">${post.po_title}</div>
 	</div>
@@ -19,7 +23,7 @@
 	<div class="form-group">
 		<label>작성일</label>
 		<div class="form-control">
-			<fmt:formatDate value="${post.po_date}" pattern="yyyy-MM-dd H:m:s"/>
+			<fmt:formatDate value="${post.po_date}" pattern="yyyy-MM-dd HH:mm:ss"/>
 		</div>
 	</div>
 	<div class="form-group">
@@ -30,8 +34,12 @@
 		<label>내용</label>
 		<div class="form-control" style="min-height: 400px">${post.po_content}</div>
 	</div>
-	<div class="mb-3">
+	<div class="mb-3 d-flex justify-content-between">
 		<a href="<c:url value="/post/list?bo_num=${post.po_bo_num}"/>" class="btn btn-outline-success">목록으로</a>
+		<div>
+			<a href="<c:url value="/post/update/${post.po_num}"/>" class="btn btn-outline-warning">수정</a>
+			<a href="<c:url value="/post/delete/${post.po_num}"/>" class="btn btn-outline-danger">삭제</a>
+		</div>
 	</div>
 </body>
 </html>

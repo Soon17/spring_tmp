@@ -25,8 +25,9 @@
 		select post.*, bo_name as po_bo_name 
 		from post
 		join board on po_bo_num = bo_num 
+		where po_del = "N"
 		<if test="po_bo_num != 0">
-			where po_bo_num = #{po_bo_num}
+			and po_bo_num = #{po_bo_num}
 		</if>
 		order by po_num desc
 	</select>
@@ -43,10 +44,22 @@
 	</update>
 	
 	<select id="selectPost" resultType="PostVO">
-		select post.*, bo_num as po_bo_num
+		select post.*, bo_name as po_bo_name
 		from post 
 		join board on bo_num = po_bo_num
-		where po_num = #{po_num}
+		where po_num = #{po_num} and po_del = "N"
 	</select>
+	
+	<update id="deletePost">
+		update post
+		set po_del = "Y"
+		where po_num = #{po_num}
+	</update>
+	
+	<update id="updatePost">
+		update post
+		set po_title = #{post.po_title}, po_content = #{post.po_content}
+		where po_num = #{post.po_num}
+	</update>
 </mapper>
 <!-- ============================================================================= -->
