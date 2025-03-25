@@ -48,6 +48,9 @@ public class PostController {
 	}
 	@PostMapping("/insert")
 	public String insertPost(Model model, PostVO post, HttpSession session) {
+		
+		System.out.println(post);
+		
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		if(postService.insertPost(post, user)) {
 			model.addAttribute("url", "/post/list");
@@ -56,6 +59,8 @@ public class PostController {
 			model.addAttribute("url", "/post/list");
 			model.addAttribute("msg", "게시글을 등록하지 못했습니다.");
 		}
+		
+		System.out.println(post);
 		return "message";
 	}
 }

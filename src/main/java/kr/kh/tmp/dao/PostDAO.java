@@ -19,4 +19,6 @@ public interface PostDAO {
 
 	List<PostVO> selectPostList(@Param("po_bo_num")Integer bo_num);
 
+	boolean insertPost(@Param("post")PostVO post);
+
 }

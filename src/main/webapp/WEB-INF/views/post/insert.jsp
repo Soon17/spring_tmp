@@ -36,6 +36,17 @@
         tabsize: 2,
         height: 400
       });
+      
+      ${"form"}.submit(function(e) {
+    	  let obj = ${"[name=po_title]"};
+    	  let title = obj.val().trim();
+    	  
+    	  if(title.length == 0){
+    		  alert("제목을 입력하세요.");
+    		  obj.focus();
+    		  return false;
+    	  }
+      })
     </script>
 </body>
 </html>
