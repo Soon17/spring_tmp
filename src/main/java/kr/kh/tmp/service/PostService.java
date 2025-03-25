@@ -20,4 +20,8 @@ public interface PostService {
 
 	boolean insertPost(PostVO post, MemberVO user);
 
+	void updateView(int po_num);
+
+	PostVO getPost(int po_num);
+
 }

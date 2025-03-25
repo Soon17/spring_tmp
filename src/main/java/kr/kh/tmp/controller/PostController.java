@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -62,5 +63,15 @@ public class PostController {
 		
 		System.out.println(post);
 		return "message";
+	}
+	@GetMapping("/detail/{po_num}")
+	public String detail(Model model,@PathVariable("po_num") int po_num) {
+		//조회수 증가
+		postService.updateView(po_num);
+		//게시글을 가져와서 화면에 전달
+		PostVO post = postService.getPost(po_num);
+		
+		model.addAttribute("post", post);
+		return "/post/detail";
 	}
 }

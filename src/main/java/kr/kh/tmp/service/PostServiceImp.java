@@ -65,4 +65,15 @@ public class PostServiceImp implements PostService {
 		
 		return res;
 	}
+
+	@Override
+	public void updateView(int po_num) {
+		postDao.updateView(po_num);
+	}
+
+	@Override
+	public PostVO getPost(int po_num) {
+		
+		return postDao.selectPost(po_num);
+	}
 }
