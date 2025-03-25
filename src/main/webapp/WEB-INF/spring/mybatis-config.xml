@@ -8,5 +8,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="kr.kh.tmp.model.vo.MemberVO" alias="MemberVO"/>
+		<typeAlias type="kr.kh.tmp.model.vo.BoardVO" alias="BoardVO"/>
+		<typeAlias type="kr.kh.tmp.model.vo.PostVO" alias="PostVO"/>
 	</typeAliases>
 </configuration>
