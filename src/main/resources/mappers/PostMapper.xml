@@ -61,5 +61,22 @@
 		set po_title = #{post.po_title}, po_content = #{post.po_content}
 		where po_num = #{post.po_num}
 	</update>
+	
+	<insert id="insertFile">
+		insert into file(fi_ori_name, fi_name, fi_po_num)
+		values(#{file.fi_ori_name},#{file.fi_name},#{file.fi_po_num})
+	</insert>
+	
+	<delete id="deleteFile">
+		delete from file where fi_num = #{fi_num}
+	</delete>
+	
+	<select id="selectFileList" resultType="FileVO">
+		select * from file where fi_po_num = #{fi_po_num}
+	</select>
+	
+	<select id="selectFile" resultType="FileVO">
+		select * from file where fi_num = #{fi_num}
+	</select>
 </mapper>
 <!-- ============================================================================= -->

@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import kr.kh.tmp.model.vo.BoardVO;
+import kr.kh.tmp.model.vo.FileVO;
 import kr.kh.tmp.model.vo.PostVO;
 
 public interface PostDAO {
@@ -28,5 +29,13 @@ public interface PostDAO {
 	boolean deletePost(@Param("po_num")int po_num);
 
 	boolean updatePost(@Param("post")PostVO post);
+
+	void insertFile(@Param("file")FileVO file);
+
+	void deleteFile(@Param("fi_num")int fi_num);
+
+	List<FileVO> selectFileList(@Param("fi_po_num")int po_num);
+
+	FileVO selectFile(@Param("fi_num")int fi_num);
 
 }

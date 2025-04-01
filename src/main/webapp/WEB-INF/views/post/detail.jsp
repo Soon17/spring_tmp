@@ -34,6 +34,12 @@
 		<label>내용</label>
 		<div class="form-control" style="min-height: 400px">${post.po_content}</div>
 	</div>
+	<div class="form-group">
+		<label>첨부파일</label>
+		<c:forEach items="${list }" var="file">
+			<a href="<c:url value="/download${file.fi_name}"/>" class="form-control" download="${file.fi_ori_name}">${file.fi_ori_name}</a>
+		</c:forEach>
+	</div>
 	<div class="mb-3 d-flex justify-content-between">
 		<a href="<c:url value="/post/list?bo_num=${post.po_bo_num}"/>" class="btn btn-outline-success">목록으로</a>
 		<div>
