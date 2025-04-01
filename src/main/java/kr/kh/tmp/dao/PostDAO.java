@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import kr.kh.tmp.model.vo.BoardVO;
 import kr.kh.tmp.model.vo.FileVO;
 import kr.kh.tmp.model.vo.PostVO;
+import kr.kh.tmp.pagination.Criteria;
 
 public interface PostDAO {
 
@@ -18,7 +19,7 @@ public interface PostDAO {
 
 	boolean deleteBoard(@Param("bo_num")int num);
 
-	List<PostVO> selectPostList(@Param("po_bo_num")Integer bo_num);
+	List<PostVO> selectPostList(@Param("cri")Criteria cri);
 
 	boolean insertPost(@Param("post")PostVO post);
 
@@ -37,5 +38,7 @@ public interface PostDAO {
 	List<FileVO> selectFileList(@Param("fi_po_num")int po_num);
 
 	FileVO selectFile(@Param("fi_num")int fi_num);
+
+	int selectCountPostList(@Param("cri")Criteria cri);
 
 }

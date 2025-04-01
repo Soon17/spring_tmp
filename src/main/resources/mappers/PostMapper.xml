@@ -26,10 +26,11 @@
 		from post
 		join board on po_bo_num = bo_num 
 		where po_del = "N"
-		<if test="po_bo_num != 0">
-			and po_bo_num = #{po_bo_num}
+		<if test="cri.bo_num != 0">
+			and po_bo_num = #{cri.bo_num}
 		</if>
 		order by po_num desc
+		limit #{cri.pageStart}, #{cri.perPageNum}
 	</select>
 	
 	<insert id="insertPost" useGeneratedKeys="true" keyProperty="post.po_num">
@@ -77,6 +78,15 @@
 	
 	<select id="selectFile" resultType="FileVO">
 		select * from file where fi_num = #{fi_num}
+	</select>
+	
+	<select id="selectCountPostList" resultType="int">
+		select count(*) 
+		from post 
+		where po_del = "N"
+		<if test="cri.bo_num != 0">
+			and po_bo_num = #{cri.bo_num}
+		</if>
 	</select>
 </mapper>
 <!-- ============================================================================= -->

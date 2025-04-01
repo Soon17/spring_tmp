@@ -51,6 +51,43 @@
 		  	</c:if>
 		</tbody>
 	</table>
+	
+	<ul class="pagination justify-content-center">
+		<c:if test="${!pm.prev }">
+			<c:set var="prev" value="disabled" />
+		</c:if>
+		<c:url var="url" value="/post/list">
+			<c:param name="bo_num" value="${pm.cri.bo_num }"/>
+			<c:param name="page" value="${pm.startPage - 1}"/>
+		</c:url>
+	    <li class="page-item ${prev}">
+	    	<a class="page-link" href="${url}">이전</a>
+	    </li>
+	    <c:forEach begin="${pm.startPage }" end="${pm.endPage}" var="i">
+	    	<c:set var="active" value=""/>
+	    	<c:if test="${pm.cri.page == i }">
+	    		<c:set var="active" value="active"/>	
+	    	</c:if>
+	    	<c:url var="url" value="/post/list">
+				<c:param name="bo_num" value="${pm.cri.bo_num }"/>
+				<c:param name="page" value="${i}"/>
+			</c:url>
+		    <li class="page-item ${active }">
+		    	<a class="page-link" href="${url}">${i}</a>
+		    </li>
+	    </c:forEach>
+	    <c:if test="${!pm.next }">
+			<c:set var="next" value="disabled" />
+		</c:if>
+		<c:url var="url" value="/post/list">
+			<c:param name="bo_num" value="${pm.cri.bo_num }"/>
+			<c:param name="page" value="${pm.endPage + 1}"/>
+		</c:url>
+	    <li class="page-item ${next}">
+	    	<a class="page-link" href="${url}">다음</a>
+	    </li>
+	</ul>
+	
 	<div class="clearfix mb-3">
 		<a href="<c:url value="/post/insert?bo_num=${bo_num}"/>" class="btn btn-outline-success float-right">게시글 등록</a>
 	</div>

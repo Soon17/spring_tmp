@@ -17,6 +17,8 @@ import kr.kh.tmp.model.vo.BoardVO;
 import kr.kh.tmp.model.vo.FileVO;
 import kr.kh.tmp.model.vo.MemberVO;
 import kr.kh.tmp.model.vo.PostVO;
+import kr.kh.tmp.pagination.PageMaker;
+import kr.kh.tmp.pagination.PostCriteria;
 import kr.kh.tmp.service.PostService;
 
 @Controller
@@ -27,15 +29,19 @@ public class PostController {
 	private PostService postService;
 	
 	@GetMapping("/list")
-	public String list(Model model, Integer bo_num) {
-		bo_num = bo_num == null ? 0 : bo_num;
-		List<PostVO> list = postService.getPostList(bo_num);
+	public String list(Model model, PostCriteria cri) {
+
+		cri.setPerPageNum(2);
+		
+		List<PostVO> list = postService.getPostList(cri);
 		
 		List<BoardVO> boardList = postService.getBoardList();
 		
+		PageMaker pm = postService.getPageMaker(cri);
+		
 		model.addAttribute("list", list);
 		model.addAttribute("boardList", boardList);
-		model.addAttribute("bo_num", bo_num);
+		model.addAttribute("pm", pm);
 		return "/post/list";
 	}
 	
