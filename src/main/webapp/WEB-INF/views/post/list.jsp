@@ -95,6 +95,7 @@
 	</ul>
 	
 	<form action="<c:url value="/post/list"/>" class="input-group mb-3">
+		<input type="hidden" name="bo_num" value="${pm.cri.bo_num}">
 		<select class="form-control" name="type">
 			<c:set var="selected" value=""/>
 			<c:if test="${pm.cri.type == 0}">
