@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import kr.kh.tmp.dao.CommentDAO;
 import kr.kh.tmp.model.vo.CommentVO;
 import kr.kh.tmp.model.vo.MemberVO;
-import kr.kh.tmp.pagination.CommentCriteria;
 import kr.kh.tmp.pagination.Criteria;
 import kr.kh.tmp.pagination.PageMaker;
 
@@ -39,5 +38,21 @@ public class CommentServiceImp implements CommentService{
 		if(cri == null) return null;
 		int count = commentDao.selectCountCommentList(cri);
 		return new PageMaker(3, cri, count);
+	}
+
+	@Override
+	public boolean deleteComment(MemberVO user, int co_num) {
+		//if(user == null) return false;
+		CommentVO comment = commentDao.selectComment(co_num);
+		
+		if(comment == null) {
+			return false;
+		}
+		user = new MemberVO();
+		user.setMe_id("asd");
+		if(!comment.getCo_me_id().equals(user.getMe_id())) {
+			return false;
+		}
+		return commentDao.deleteComment(co_num);
 	}
 }

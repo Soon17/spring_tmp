@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.kh.tmp.model.vo.CommentVO;
@@ -40,5 +41,12 @@ public class CommentController {
 		model.addAttribute("list", list);
 		model.addAttribute("pm", pm);
 		return "comment/list";
+	}
+	
+	@ResponseBody
+	@PostMapping("/delete")
+	public boolean delete(@RequestParam int co_num, HttpSession session) {
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		return commentService.deleteComment(user, co_num);
 	}
 }

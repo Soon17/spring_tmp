@@ -16,4 +16,6 @@ public interface CommentService {
 
 	PageMaker getPageMaker(Criteria cri);
 
+	boolean deleteComment(MemberVO user, int co_num);
+
 }
