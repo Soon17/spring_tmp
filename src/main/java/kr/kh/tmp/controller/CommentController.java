@@ -3,6 +3,7 @@ package kr.kh.tmp.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
+import javax.xml.stream.events.Comment;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -48,5 +49,12 @@ public class CommentController {
 	public boolean delete(@RequestParam int co_num, HttpSession session) {
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		return commentService.deleteComment(user, co_num);
+	}
+	
+	@ResponseBody
+	@PostMapping("/update")
+	public boolean update(@RequestBody CommentVO comment, HttpSession session) {
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		return commentService.updateComment(user, comment);
 	}
 }

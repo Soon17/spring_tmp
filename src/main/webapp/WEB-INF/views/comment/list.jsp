@@ -18,13 +18,13 @@
 						<div class="comment-content">${co.co_content}</div>
 						<div>
 							<button class="btn btn-outline-success btn-reply" data-num="${co.co_num}">답글</button>
-							<button class="btn btn-outline-warning">수정</button>
+							<button class="btn btn-outline-warning btn-update" data-num="${co.co_num}">수정</button>
 							<button class="btn btn-outline-danger btn-delete" data-num="${co.co_num}">삭제</button>
 						</div>
 				</c:if>
 				<c:if test="${co.co_del ne 'N' }">
-						<div>작성자에 의해 삭제된 댓글입니다.</div>
-					</c:if>
+					<div>작성자에 의해 삭제된 댓글입니다.</div>
+				</c:if>
 				</div>
 			</c:forEach>
 		</div>
@@ -73,7 +73,7 @@
 			let str = `
 				<form class="comment-insert-form" data-num="\${num}">
 					<textarea name="content"></textarea>
-					<button type="submit">댓글 등록</button>
+					<button type="submit">답글 등록</button>
 				</form>
 			`;
 			$(this).parent().after(str);				
@@ -100,5 +100,37 @@
 			});
 		})
 	</script>
+	
+	<script type="text/javascript">
+		$(".btn-update").click(function(e){
+			var $content = $(this).parents(".comment-item").find(".comment-content");
+			//parent(요소): 요소의 모든 조상들을 타깃 , find("요소"): 모든 자식들 중 요소를 타깃
+			
+			var content = $content.text();
+			$content.hide();
+			if($content.nextAll(".comment-update-form").length != 0) return;
+			let num = $(this).data("num");
+			var str = `
+				<form class="comment-update-form" data-num="\${num}">
+					<textarea name="content">\${content}</textarea>
+					<button type="submit">댓글 수정</button>
+				</form>
+			`;
+			//역따옴표를 사용할 때 서버 변수가 아닌 스크립트 변수 content를 인식하기 위해 역슬래시가 필요.
+			
+			$content.after(str);
+			$(this).parent().hide();
+		});
+	</script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+

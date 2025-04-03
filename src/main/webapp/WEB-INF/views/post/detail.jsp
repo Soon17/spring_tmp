@@ -120,5 +120,40 @@
 			});
 		}
 	</script>
+	
+	<script type="text/javascript">
+		$(document).on("submit", ".comment-update-form", function(e){
+			e.preventDefault();
+			
+			var $content = $(this).find("[name=content]");
+			var content = $content.val();
+			var co_num = $(this).data("num");
+			
+			if(content.trim().length == 0){
+				alert("수정할 댓글 내용을 입력하세요.")
+				$content.focus();
+				return;
+			}
+			
+			$.ajax({
+				async : true,
+				url : '<c:url value="/comment/update"/>', 
+				type : 'post',
+				data : JSON.stringify({
+					co_num : co_num,
+					co_content : content
+				}),
+				contentType : "application/json; charset=utf-8",
+				success : function (data){
+					if(data){
+						alert('댓글을 수정하였습니다!');
+						getCommentList(cri);
+					}else{
+						alert('댓글 수정에 실패하였습니다!');
+					}
+				}
+			});
+		});
+	</script>
 </body>
 </html>
