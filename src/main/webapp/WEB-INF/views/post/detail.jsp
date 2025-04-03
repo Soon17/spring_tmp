@@ -58,9 +58,9 @@
 		<div class="comment-wrap">
 		
 		</div>
-		<form class="comment-insert-form">
-			<textarea name="content"></textarea>
-			<button type="submit">댓글 등록</button>
+		<form class="comment-insert-form input-group">
+			<textarea name="content" class="form-control"></textarea>
+			<button type="submit" class="btn btn-outline-success">댓글 등록</button>
 		</form>
 	</div>
 	
@@ -71,6 +71,14 @@
 		}
 		$(document).on("submit", ".comment-insert-form", function(e){
 			e.preventDefault();
+			
+			if("${user.me_id}" == ""){ //${user.me_id} == "" 로 하면 로그인 상태가 아닐 경우 /  == "" 와 같아 오류가 남
+				if(confirm("로그인이 필요한 서비스입니다.\n로그인 페이지로 이동하시겠습니까?")){
+					location.href = "<c:url value="/login"/>";
+				}
+				return;
+			}
+			
 			var $content = $(this).find("[name=content]");
 			var content = $content.val();
 			var ori_num = $(this).data("num");

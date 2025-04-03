@@ -18,8 +18,10 @@
 						<div class="comment-content">${co.co_content}</div>
 						<div>
 							<button class="btn btn-outline-success btn-reply" data-num="${co.co_num}">답글</button>
-							<button class="btn btn-outline-warning btn-update" data-num="${co.co_num}">수정</button>
-							<button class="btn btn-outline-danger btn-delete" data-num="${co.co_num}">삭제</button>
+							<c:if test="${co.co_me_id eq user.me_id}">
+								<button class="btn btn-outline-warning btn-update" data-num="${co.co_num}">수정</button>
+								<button class="btn btn-outline-danger btn-delete" data-num="${co.co_num}">삭제</button>
+							</c:if>
 						</div>
 				</c:if>
 				<c:if test="${co.co_del ne 'N' }">
@@ -68,12 +70,19 @@
 	
 	<script type="text/javascript">
 		$(document).on("click", ".btn-reply", function(e){
+			
+			if("${user.me_id}" == ""){ //${user.me_id} == "" 로 하면 로그인 상태가 아닐 경우 /  == "" 와 같아 오류가 남
+				if(confirm("로그인이 필요한 서비스입니다.\n로그인 페이지로 이동하시겠습니까?")){
+					location.href = "<c:url value="/login"/>";
+				}
+				return;
+			}
 			if($(this).parent().next().length != 0) return;
 			let num = $(this).data("num");
 			let str = `
-				<form class="comment-insert-form" data-num="\${num}">
-					<textarea name="content"></textarea>
-					<button type="submit">답글 등록</button>
+				<form class="comment-insert-form input-group" data-num="\${num}">
+					<textarea name="content" class="form-control"></textarea>
+					<button type="submit" class="btn btn-outline-success">답글 등록</button>
 				</form>
 			`;
 			$(this).parent().after(str);				
@@ -111,9 +120,9 @@
 			if($content.nextAll(".comment-update-form").length != 0) return;
 			let num = $(this).data("num");
 			var str = `
-				<form class="comment-update-form" data-num="\${num}">
-					<textarea name="content">\${content}</textarea>
-					<button type="submit">댓글 수정</button>
+				<form class="comment-update-form input-group" data-num="\${num}">
+					<textarea name="content" class="form-control">\${content}</textarea>
+					<button type="submit" class="btn btn-outline-success">댓글 수정</button>
 				</form>
 			`;
 			//역따옴표를 사용할 때 서버 변수가 아닌 스크립트 변수 content를 인식하기 위해 역슬래시가 필요.
