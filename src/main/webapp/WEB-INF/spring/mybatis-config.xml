@@ -12,5 +12,6 @@
 		<typeAlias type="kr.kh.tmp.model.vo.PostVO" alias="PostVO"/>
 		<typeAlias type="kr.kh.tmp.model.vo.FileVO" alias="FileVO"/>
 		<typeAlias type="kr.kh.tmp.model.vo.CommentVO" alias="CommentVO"/>
+		<typeAlias type="kr.kh.tmp.model.vo.LikeVO" alias="LikeVO"/>
 	</typeAliases>
 </configuration>

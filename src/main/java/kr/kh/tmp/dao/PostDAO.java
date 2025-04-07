@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import kr.kh.tmp.model.vo.BoardVO;
 import kr.kh.tmp.model.vo.FileVO;
+import kr.kh.tmp.model.vo.LikeVO;
 import kr.kh.tmp.model.vo.PostVO;
 import kr.kh.tmp.pagination.Criteria;
 
@@ -40,5 +41,9 @@ public interface PostDAO {
 	FileVO selectFile(@Param("fi_num")int fi_num);
 
 	int selectCountPostList(@Param("cri")Criteria cri);
+
+	LikeVO selectLike(@Param("li_po_num")int li_po_num, @Param("li_me_id")String li_me_id);
+
+	void insertLike(@Param("li_po_num")int li_po_num, @Param("li_me_id")String li_me_id, @Param("li_state")int li_state);
 
 }

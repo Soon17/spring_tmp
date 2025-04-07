@@ -116,5 +116,14 @@
 			</when>
 		</choose>
 	</select>
+	
+	<select id="selectLike" resultType="LikeVO">
+		select * from `like` where li_me_id = #{li_me_id} and li_po_num = #{li_po_num}
+	</select>
+	
+	<insert id="insertLike">
+		insert into `like`(li_po_num, li_state, li_me_id)
+		value(#{li_po_num},#{li_state},#{li_me_id})
+	</insert>
 </mapper>
 <!-- ============================================================================= -->
