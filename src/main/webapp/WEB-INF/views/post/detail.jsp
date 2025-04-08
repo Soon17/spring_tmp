@@ -69,6 +69,10 @@
 	
 	<script type="text/javascript">
 		$(".btn-up, .btn-down").click(function(e){
+			if('${user.me_id}' == ''){
+				alert("로그인이 필요한 서비스입니다.");
+				return;
+			}
 			let num = $(this).data("num");
 			let state = $(this).data("state");
 			
@@ -82,7 +86,17 @@
 				}), 
 				contentType : "application/json; charset=utf-8",
 				success : function (data){
-					console.log(data);
+					switch(data){
+					case 1:
+						alert("추천!");
+						break;
+					case -1:
+						alert("비추천!");
+						break;
+					case 0:
+						alert((state == 1 ? "추천" : "비추천") + " 취소");
+					}
+					location.reload();
 				}
 			});
 		})
